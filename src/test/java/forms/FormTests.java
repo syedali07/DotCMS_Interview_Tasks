@@ -2,6 +2,7 @@ package forms;
 
 import base.BaseTests;
 import org.testng.annotations.Test;
+import resources.Resource;
 
 import static org.testng.Assert.assertEquals;
 
@@ -31,7 +32,9 @@ public class FormTests extends BaseTests {
         var personaPage = searchPage.setType("Persona");
         personaPage.openForm();
         personaPage.toInteractWithForm();
-        personaPage.setName("Syed Ali1");
+        String name = "Syed Ali" + Resource.generateRandomNumber();
+        System.out.println(name);
+        personaPage.setName(name);
         personaPage.clickSaveButton();
         assertEquals(personaPage.getContentSavedMessage(), "Content saved", "This is an error");
     }
