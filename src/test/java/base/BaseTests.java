@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTests {
     private WebDriver driver;
-
+    private String url = "https://demo.dotcms.com/dotAdmin/?r=1650342880831";
     protected LoginPage loginPage;
     protected HomePage homePage;
 
@@ -27,7 +27,7 @@ public class BaseTests {
 
     @BeforeMethod
     public void goHome() {
-        driver.get("https://demo.dotcms.com/dotAdmin/?r=1650342880831");
+        driver.get(url);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         loginPage = new LoginPage(driver);
     }
@@ -44,9 +44,9 @@ public class BaseTests {
         return options;
     }
 
-    public HomePage login(){
-        loginPage.setUserName("admin@dotcms.com");
-        loginPage.setPassword("admin");
+    public HomePage login(String username, String password){
+        loginPage.setUserName(username);
+        loginPage.setPassword(password);
         return loginPage.clickSignInButton();
     }
 }

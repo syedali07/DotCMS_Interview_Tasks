@@ -16,7 +16,7 @@ public class SearchPage {
         this.driver = driver;
     }
 
-    public PersonaPage setType() throws InterruptedException {
+    public PersonaPage setType(String searchKeyWord) throws InterruptedException {
 
         Thread.sleep(30);
         driver.switchTo().frame("detailFrame");
@@ -25,7 +25,7 @@ public class SearchPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(type));
         {
             driver.findElement(type).clear();
-            driver.findElement(type).sendKeys("Persona" + Keys.ENTER);
+            driver.findElement(type).sendKeys(searchKeyWord + Keys.ENTER);
             return new PersonaPage(driver);
         }
     }

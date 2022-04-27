@@ -14,6 +14,11 @@ public class PersonaPage {
     private By nameRequiredError = By.xpath("//li[text()='The field Name is required.']");
     private By formNameBox = By.cssSelector("#name");
     private By successfullySaveMessage = By.cssSelector(".systemMessages");
+    private By modalCloseButton = By.xpath("//span[text()='Close']");
+    private By closeFormButton = By.xpath("//i[text()='close']");
+    private By closeFormModalButton = By.xpath("//button/span[text()='Close']");
+    private By profileButton = By.xpath("//dot-avatar");
+    private By logOutLink = By.xpath("//li/a[text()='Logout']");
 
     public PersonaPage(WebDriver driver){
         this.driver = driver;
@@ -41,6 +46,20 @@ public class PersonaPage {
     public void clickSaveButton(){
         driver.findElement(formSaveButton).click();
     }
+
+    public void logOut(){
+        driver.findElement(profileButton).click();
+        driver.findElement(logOutLink).click();
+    }
+
+    public void closeForm(){
+        driver.findElement(modalCloseButton).click();
+        driver.switchTo().parentFrame();
+        driver.findElement(closeFormButton).click();
+//        driver.findElement(closeFormModalButton).click();
+    }
+
+
 
     public String getNameRequiredError(){
         return driver.findElement(nameRequiredError).getText();
