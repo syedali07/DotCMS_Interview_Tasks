@@ -1,0 +1,19 @@
+<!-- DotCMS -->
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test Runner">
+
+    <test name="FormTests">
+        <classes>
+
+            <class name="forms.FormTests">
+                <methods>
+                    <include name="testRequiredNameField"></include>
+                    <include name="testSuccessfullySaved"></include>
+
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>
